@@ -32,14 +32,6 @@ let y = x
 x[2] = "x"
 console.log("x", x)
 console.log("y", y)
-function test() {
-  if (1 < 2) {
-    var reset = true
-    console.log(reset)
-  }
-  var reset = 123 // same reset from L37
-
-}
 
 let initial_snake = [
   {x: 6, y: 3},
@@ -55,7 +47,7 @@ let initial_apple = {x: 7, y: 3}
 let apple;
 function randomApple() {
   apple = {
-    x: Math.floor(Math.random() * gridWidth)),
+    x: Math.floor(Math.random() * gridWidth),
     y: Math.floor(Math.random() * gridHeight),
   }
 }
@@ -160,6 +152,7 @@ function loop() {
   drawSnake()
   drawCircle(apple.x, apple.y)
 }
+resetGame()
 setInterval(loop, 100)
 
 // Discussion:
