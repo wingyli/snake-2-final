@@ -5,7 +5,7 @@ canvas.height = document.body.clientHeight
 let ctx = canvas.getContext('2d')
 
 // variables
-let gridSize = 40
+let gridSize = 20
 let gridWidth = Math.floor(canvas.width / gridSize)
 let gridHeight = Math.floor(canvas.height / gridSize) // <- 50
 
@@ -143,10 +143,17 @@ function loop() {
   }
 
   // todo check if out of bounds
-  
+  if (head.x < 0 || head.y < 0 || head.x >= gridWidth || head.y >= gridHeight) {
+    resetGame()
+  }
 
-  // todo check if the snake is touching itself
-  
+  // todo check if the snake is colliding with itself
+  for (let i = 1; i < snake.length; i++) {
+    let body = snake[i]
+    if (head.x === body.x && head.y === body.y) {
+      resetGame()
+    }
+  }
 
   erase()
   drawSnake()
